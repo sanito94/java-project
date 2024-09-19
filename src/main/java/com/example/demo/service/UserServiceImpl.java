@@ -2,9 +2,11 @@ package com.example.demo.service;
 
 import com.example.demo.entity.Employee;
 import com.example.demo.repo.UserRepository;
+import org.springdoc.api.OpenApiResourceNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -21,23 +23,27 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public Employee getUserById(int id) {
-        return  userRepository.findById(id).orElse(null);
+        return  userRepository.findById(id).orElseThrow(() -> new OpenApiResourceNotFoundException("User not found with id: " + id));
     }
 
     @Override
     public List<Employee> getUsers() {
-        return userRepository.findAllByLastName();
+        return userRepository.findAllByOrderByLastNameAscDateOfBirthAsc();
     }
 
+
     @Override
-    public Employee updateUser(Employee user) {
+    public Employee updateUser(int id, Employee user) {
         Employee oldUser = null;
 
-        Optional<Employee> optionalUser = userRepository.findById(user.getId());
+        Optional<Employee> optionalUser = userRepository.findById(id);
         if (optionalUser.isPresent()) {
             oldUser = optionalUser.get();
             oldUser.setFirstName(user.getFirstName());
             oldUser.setLastName(user.getLastName());
+            oldUser.setDateOfBirth(user.getDateOfBirth());
+            oldUser.setPhoneNumber(user.getPhoneNumber());
+            oldUser.setEmail(user.getEmail());
             userRepository.save(oldUser);
         } else {
             oldUser = new Employee();
