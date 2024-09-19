@@ -1,12 +1,12 @@
 package com.example.demo.entity;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import java.sql.Date;
+import java.sql.Timestamp;
 
 
 @Data
@@ -15,7 +15,7 @@ import lombok.NoArgsConstructor;
 @Entity
 public class Employee {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="user_id")
     private int id;
     @Column(name="firstName")
@@ -23,7 +23,7 @@ public class Employee {
     @Column(name="lastName")
     private String lastName;
     @Column(name="dateOfBirth")
-    private String dateOfBirth;
+    private Date dateOfBirth;
     @Column(name="phoneNumber")
     private String phoneNumber;
     @Column(name="email")
