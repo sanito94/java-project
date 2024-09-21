@@ -2,8 +2,8 @@
 This is simple User Managment Application.
 
 ## Requirements
-IntelliJ IDEA 2024.2.1 or later
-Node.js v20.14.0 or later
+IntelliJ IDEA 2024.2.1 or later <br>
+Node.js v20.14.0 or later <br>
 Visual Studio Code 1.93.1 or later
 
 ## How to install the back - end part of our project.
