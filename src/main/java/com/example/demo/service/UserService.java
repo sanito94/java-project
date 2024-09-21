@@ -15,4 +15,6 @@ public interface UserService {
     Employee updateUser(int id, Employee user);
 
     String deleteUserById(int id);
+
+    List<Employee> searchUsers(String searchTerm);
 }

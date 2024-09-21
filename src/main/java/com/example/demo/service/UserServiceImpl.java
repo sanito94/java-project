@@ -1,12 +1,11 @@
 package com.example.demo.service;
 
 import com.example.demo.entity.Employee;
-import com.example.demo.repo.UserRepository;
+import com.example.demo.repository.UserRepository;
 import org.springdoc.api.OpenApiResourceNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -56,5 +55,10 @@ public class UserServiceImpl implements UserService {
     public String deleteUserById(int id) {
         userRepository.deleteById(id);
         return "User deleted";
+    }
+
+    @Override
+    public List<Employee> searchUsers(String searchTerm) {
+        return userRepository.findByFirstNameContainingOrEmailContainingOrLastNameContaining(searchTerm, searchTerm, searchTerm);
     }
 }

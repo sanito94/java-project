@@ -1,7 +1,7 @@
 package com.example.demo;
 
 import com.example.demo.entity.Employee;
-import com.example.demo.repo.UserRepository;
+import com.example.demo.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -25,7 +25,7 @@ public class DemoApplication implements CommandLineRunner {
         user1.setFirstName("John");
         user1.setLastName("Doe");
         user1.setEmail("john@doe.com");
-        user1.setPhoneNumber("1234567890");
+        user1.setPhoneNumber("+359164327841");
         user1.setDateOfBirth(Date.valueOf("1993-07-21"));
         userRepository.save(user1);
 
@@ -34,7 +34,7 @@ public class DemoApplication implements CommandLineRunner {
         user2.setFirstName("Mitko");
         user2.setLastName("Muglata");
         user2.setEmail("muglata@doe.com");
-        user2.setPhoneNumber("1111122334");
+        user2.setPhoneNumber("+359123456789");
         user2.setDateOfBirth(Date.valueOf("2000-03-11"));
         userRepository.save(user2);
     }
