@@ -28,6 +28,9 @@ Also there is a way to create a jar file to open the back-end easier.
 
    That's how we start the back-end of our project through jar file.
 
+## Swagger
+After the back-end project is started, you can access the Swagger through this link ---> http://localhost:9090/swagger-ui/index.html
+
 
 ## There is a front-end part of the project
 
