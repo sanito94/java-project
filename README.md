@@ -15,5 +15,5 @@ That's how we start the back - end of our project.
 
 ## There is a front - end part of the project
 
-You can find the front - end part of the project here ---> https://github.com/sanito94/java-project-frontend
+You can find the front - end part of the project here ---> https://github.com/sanito94/java-project.git
 
