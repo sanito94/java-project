@@ -2,7 +2,7 @@
 This is simple back-end User Managment Application.
 
 ## Requirements
-IntelliJ IDEA 2024.2.1 or later 
+IntelliJ IDEA 2024.2.1 or later <br>
 Java 17 or later
 
 ## How to install the back-end part of our project.
