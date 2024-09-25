@@ -1,20 +1,23 @@
 package com.example.demo.service;
 
-import com.example.demo.entity.Employee;
+import com.example.demo.entity.User;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 
-import java.util.Date;
 import java.util.List;
 
 public interface UserService {
-    Employee createUser(Employee user);
+    User createUser(User user);
 
-    Employee getUserById(int id);
+    User getUserById(int id);
 
-    List<Employee> getUsers();
+    List<User> getUsers();
 
-    Employee updateUser(int id, Employee user);
+    User updateUser(int id, User user);
 
     String deleteUserById(int id);
 
-    List<Employee> searchUsers(String searchTerm);
+    List<User> searchUsers(String searchTerm);
+
+    Page<User> findAllUsersByPage(PageRequest pageable);
 }

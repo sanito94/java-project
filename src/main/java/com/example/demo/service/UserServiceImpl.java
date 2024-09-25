@@ -1,9 +1,12 @@
 package com.example.demo.service;
 
-import com.example.demo.entity.Employee;
+import com.example.demo.entity.User;
+import com.example.demo.exception.UsersNotFoundError;
 import com.example.demo.repository.UserRepository;
 import org.springdoc.api.OpenApiResourceNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -16,26 +19,31 @@ public class UserServiceImpl implements UserService {
     private UserRepository userRepository;
 
     @Override
-    public Employee createUser(Employee user) {
+    public User createUser(User user) {
         return userRepository.save(user);
     }
 
     @Override
-    public Employee getUserById(int id) {
+    public User getUserById(int id) {
         return  userRepository.findById(id).orElseThrow(() -> new OpenApiResourceNotFoundException("User not found with id: " + id));
     }
 
     @Override
-    public List<Employee> getUsers() {
-        return userRepository.findAllByOrderByLastNameAscDateOfBirthAsc();
+    public List<User> getUsers() {
+        List<User> users = userRepository.findAllByOrderByLastNameAscDateOfBirthAsc();
+        if (users.isEmpty()) {
+            throw new UsersNotFoundError("Users not found");
+        } else {
+            return users;
+        }
     }
 
 
     @Override
-    public Employee updateUser(int id, Employee user) {
-        Employee oldUser = null;
+    public User updateUser(int id, User user) {
+        User oldUser = null;
 
-        Optional<Employee> optionalUser = userRepository.findById(id);
+        Optional<User> optionalUser = userRepository.findById(id);
         if (optionalUser.isPresent()) {
             oldUser = optionalUser.get();
             oldUser.setFirstName(user.getFirstName());
@@ -45,7 +53,7 @@ public class UserServiceImpl implements UserService {
             oldUser.setEmail(user.getEmail());
             userRepository.save(oldUser);
         } else {
-            oldUser = new Employee();
+            oldUser = new User();
             userRepository.save(oldUser);
         }
         return oldUser;
@@ -53,12 +61,23 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public String deleteUserById(int id) {
-        userRepository.deleteById(id);
-        return "User deleted";
+        User user = getUserById(id);
+
+        if (user != null) {
+            userRepository.deleteById(id);
+            return "User with id " +  id  + " deleted";
+        } else {
+            throw new UsersNotFoundError("User not found with id: " + id);
+        }
     }
 
     @Override
-    public List<Employee> searchUsers(String searchTerm) {
+    public List<User> searchUsers(String searchTerm) {
         return userRepository.findByFirstNameContainingOrEmailContainingOrLastNameContaining(searchTerm, searchTerm, searchTerm);
+    }
+
+    @Override
+    public Page<User> findAllUsersByPage(PageRequest pageable) {
+        return userRepository.findAll(pageable);
     }
 }

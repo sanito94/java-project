@@ -1,22 +1,20 @@
 package com.example.demo.entity;
 
 import jakarta.persistence.*;
-import jakarta.validation.Valid;
 import jakarta.validation.constraints.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.springframework.validation.annotation.Validated;
 
 import java.sql.Date;
-import java.sql.Timestamp;
 
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-public class Employee {
+@Table(name = "user_table")
+public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

@@ -1,27 +1,22 @@
-package com.example.demo;
+package com.example.demo.data;
 
-import com.example.demo.entity.Employee;
+import com.example.demo.entity.User;
 import com.example.demo.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.stereotype.Component;
 
 import java.sql.Date;
 
-@SpringBootApplication
-public class DemoApplication implements CommandLineRunner {
-
-    public static void main(String[] args) {
-        SpringApplication.run(DemoApplication.class, args);
-    }
+@Component
+public class SampleDataLoader implements CommandLineRunner {
 
     @Autowired
     private UserRepository userRepository;
 
     @Override
     public void run(String... args) throws Exception {
-        Employee user1 = new Employee();
+        User user1 = new User();
         user1.setFirstName("John");
         user1.setLastName("Doe");
         user1.setEmail("john@doe.com");
@@ -30,7 +25,7 @@ public class DemoApplication implements CommandLineRunner {
         userRepository.save(user1);
 
 
-        Employee user2 = new Employee();
+        User user2 = new User();
         user2.setFirstName("Mitko");
         user2.setLastName("Muglata");
         user2.setEmail("muglata@doe.com");
