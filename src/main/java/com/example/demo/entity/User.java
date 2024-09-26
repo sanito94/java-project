@@ -18,7 +18,7 @@ public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="user_id")
+    @Column(name="id")
     private int id;
 
     @Size(min=2, max=20, message = "Firstname must be between 2 and 20 characters")
