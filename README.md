@@ -3,17 +3,19 @@ This is simple back-end User Managment Application.
 
 ## Requirements
 IntelliJ IDEA 2024.2.1 or later <br>
-Java 17 or later
+Java 17 or later <br>
+Docker latest version
 
 ## How to install the back-end part of our project.
 
 1. First create a folder with the name back-end and open the same folder in the terminal (cmd or Powershell) and type git clone https://github.com/sanito94/java-project.git --> that is how we clone the back-end part of the  project.
-2. Open IntelliJ.
-3. File->Open and choose the project directory.
-4. Top right corner should be a green pointer (Run). Click on it to start the back-end of the project.
+2. Open Docker
+3. Open IntelliJ.
+4. File->Open and choose the project directory.
+5. Open Terminal in Intellij with Ctrl+` and type docker-compose up. Make sure that port 3306 is free in order to run and also that the Docker is open.
+6. Top right corner should be a green pointer (Run). Click on it to start the back-end of the project.
 
 That's how we start the back-end of our project.
-
 
 ---------------------
 
