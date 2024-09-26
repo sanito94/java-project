@@ -14,11 +14,11 @@ Docker latest version
 4. File->Open and choose the project directory.
 5. Open Terminal in Intellij with Ctrl+` and type docker-compose up. Make sure that port 3306 is free in order to run and also that the Docker is open.
 6. Top right corner should be a green pointer (Run). Click on it to start the back-end of the project.
+7. In order to test with Postman --> Go to Authorization --> Choose Basic Auth --> username: admin and password: admin123
 
 That's how we start the back-end of our project.
 
 ---------------------
-
 
 Also there is a way to create a jar file to open the back-end easier.
 
